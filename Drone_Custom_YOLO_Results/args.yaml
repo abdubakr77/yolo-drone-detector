@@ -1,23 +1,22 @@
 task: detect
 mode: train
-model: ..\yolo26m.pt
-data: ..\..\..\..\World Of Datasets\Un-Structured Datasets\Object Detection\Drones
-  Detection Dataset\drone_dataset\data.yaml
-epochs: 30
+model: yolo26m.pt
+data: /kaggle/working/data.yaml
+epochs: 50
 time: null
 patience: 5
-batch: 32
-imgsz: 380
+batch: 4
+imgsz: 704
 save: true
 save_period: -1
 cache: false
 device: '0'
 workers: 0
 project: null
-name: Drone_Custom_YOLO_Results-3
+name: train-4
 exist_ok: false
 pretrained: true
-optimizer: adam
+optimizer: AdamW
 verbose: true
 seed: 0
 deterministic: true
@@ -72,7 +71,7 @@ simplify: true
 opset: null
 workspace: null
 nms: false
-lr0: 0.001
+lr0: 0.0001
 lrf: 0.01
 momentum: 0.937
 weight_decay: 0.0005
@@ -110,7 +109,6 @@ cfg: null
 tracker: botsort.yaml
 augmentations:
 - HorizontalFlip(p=0.5)
-- VerticalFlip(p=0.3)
 - "OneOf([\n  GaussianBlur(p=1.0, blur_limit=(0, 3), sigma_limit=(0.5, 3.0)),\n  MotionBlur(p=1.0,
   allow_shifted=True, angle_range=(0.0, 360.0), blur_limit=(3, 5), direction_range=(-1.0,
   1.0)),\n], p=0.3)"
@@ -130,4 +128,4 @@ augmentations:
 - ImageCompression(p=0.2, compression_type='jpeg', quality_range=(70, 100))
 - GaussNoise(p=0.2, mean_range=(0.0, 0.0), noise_scale_factor=1.0, per_channel=True,
   std_range=(0.2, 0.44))
-save_dir: C:\Users\ibrah.HIMA\AppData\Roaming\Ultralytics\weights\detect\Drone_Custom_YOLO_Results-3
+save_dir: /kaggle/working/runs/detect/train-4
